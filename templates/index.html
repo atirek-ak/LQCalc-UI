@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LeptoQuark Calculator</title>
+    </head>
+    <body>
+        <form action="/" method="POST">
+            Mass: <input type="text" name="mass"><br>
+            Lambdas: <input type="text" name="lambdas"><br>
+            Ignore Single & Pair: <input type="text" name="ignore"><br>
+            Values List: <textarea name="lam_values" rows = "10" cols="50"></textarea><br>
+            <input type="submit" name="submit"><br>
+        </form>
+        {%if chisq_min%}
+        <p>Minimum value of chi square is {{chisq_min}} at
+            <ol>
+                {%for i in range(num_lam):%}
+                <li>{{lambda_list[i]}} : {{opt_lambda_list[i]}}</li>
+                {%endfor%}           
+            </ol>
+        </p>
+        <p>Delta chi square and Validity:
+            <ol>
+                {%for i in range(num_input)%}
+                <li>{{input_list[i]}}: {{delta_chisq[i]}}: {{validity_list[i]}}</li>
+                {%endfor%}
+            </ol>
+        </p>
+        {%endif%}
+    </body>
+</html>
